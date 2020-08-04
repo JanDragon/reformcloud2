@@ -42,11 +42,11 @@ import java.util.UUID;
 
 public class DefaultEmbeddedPlayerWrapper implements PlayerWrapper {
 
+    private final UUID playerUniqueId;
+
     DefaultEmbeddedPlayerWrapper(UUID playerUniqueId) {
         this.playerUniqueId = playerUniqueId;
     }
-
-    private final UUID playerUniqueId;
 
     @NotNull
     private Optional<Duo<UUID, UUID>> getPlayerProcess() {

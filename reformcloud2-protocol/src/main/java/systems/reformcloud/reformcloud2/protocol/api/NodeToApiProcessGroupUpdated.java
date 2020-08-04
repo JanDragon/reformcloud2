@@ -37,14 +37,14 @@ import systems.reformcloud.reformcloud2.protocol.ProtocolPacket;
 
 public class NodeToApiProcessGroupUpdated extends ProtocolPacket {
 
+    private ProcessGroup processGroup;
+
     public NodeToApiProcessGroupUpdated() {
     }
 
     public NodeToApiProcessGroupUpdated(ProcessGroup processGroup) {
         this.processGroup = processGroup;
     }
-
-    private ProcessGroup processGroup;
 
     public ProcessGroup getProcessGroup() {
         return this.processGroup;

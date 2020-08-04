@@ -37,14 +37,14 @@ import systems.reformcloud.reformcloud2.protocol.ProtocolPacket;
 
 public class NodeToApiMainGroupDelete extends ProtocolPacket {
 
+    private MainGroup mainGroup;
+
     public NodeToApiMainGroupDelete() {
     }
 
     public NodeToApiMainGroupDelete(MainGroup mainGroup) {
         this.mainGroup = mainGroup;
     }
-
-    private MainGroup mainGroup;
 
     public MainGroup getMainGroup() {
         return this.mainGroup;

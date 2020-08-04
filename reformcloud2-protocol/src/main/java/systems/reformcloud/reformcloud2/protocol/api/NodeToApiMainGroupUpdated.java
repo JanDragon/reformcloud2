@@ -37,14 +37,14 @@ import systems.reformcloud.reformcloud2.protocol.ProtocolPacket;
 
 public class NodeToApiMainGroupUpdated extends ProtocolPacket {
 
+    private MainGroup mainGroup;
+
     public NodeToApiMainGroupUpdated() {
     }
 
     public NodeToApiMainGroupUpdated(MainGroup mainGroup) {
         this.mainGroup = mainGroup;
     }
-
-    private MainGroup mainGroup;
 
     public MainGroup getMainGroup() {
         return this.mainGroup;

@@ -37,16 +37,15 @@ import java.util.UUID;
 
 public class NodeToNodeSetProcessRuntimeState extends ProtocolPacket {
 
+    private UUID uniqueId;
+    private ProcessState processState;
+
     public NodeToNodeSetProcessRuntimeState() {
     }
-
     public NodeToNodeSetProcessRuntimeState(UUID uniqueId, ProcessState processState) {
         this.uniqueId = uniqueId;
         this.processState = processState;
     }
-
-    private UUID uniqueId;
-    private ProcessState processState;
 
     @Override
     public int getId() {

@@ -46,13 +46,12 @@ import systems.reformcloud.reforncloud2.notifications.velocity.listener.ProcessL
 )
 public final class VelocityPlugin {
 
+    public static ProxyServer proxyServer;
+    private ProcessListener listener;
     @Inject
     public VelocityPlugin(ProxyServer server) {
         proxyServer = server;
     }
-
-    private ProcessListener listener;
-    public static ProxyServer proxyServer;
 
     @Subscribe
     public void handleInit(ProxyInitializeEvent event) {

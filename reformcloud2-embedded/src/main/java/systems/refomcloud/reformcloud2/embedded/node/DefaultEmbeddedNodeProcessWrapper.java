@@ -38,11 +38,11 @@ import java.util.Optional;
 
 public class DefaultEmbeddedNodeProcessWrapper implements NodeProcessWrapper {
 
+    private NodeInformation nodeInformation;
+
     DefaultEmbeddedNodeProcessWrapper(NodeInformation nodeInformation) {
         this.nodeInformation = nodeInformation;
     }
-
-    private NodeInformation nodeInformation;
 
     @NotNull
     @Override

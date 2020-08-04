@@ -34,16 +34,15 @@ import systems.reformcloud.reformcloud2.protocol.ProtocolPacket;
 
 public class NodeToNodePublishChannelMessage extends ProtocolPacket {
 
+    private String channel;
+    private JsonConfiguration data;
+
     public NodeToNodePublishChannelMessage() {
     }
-
     public NodeToNodePublishChannelMessage(String channel, JsonConfiguration data) {
         this.channel = channel;
         this.data = data;
     }
-
-    private String channel;
-    private JsonConfiguration data;
 
     public String getChannel() {
         return this.channel;

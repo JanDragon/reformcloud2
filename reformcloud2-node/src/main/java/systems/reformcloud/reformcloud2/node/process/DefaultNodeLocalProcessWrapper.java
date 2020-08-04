@@ -66,7 +66,13 @@ public class DefaultNodeLocalProcessWrapper extends DefaultNodeRemoteProcessWrap
 
     private static final String LIB_PATH = Paths.get("").toAbsolutePath().toString();
     private static final String[] DEFAULT_SHUTDOWN_COMMANDS = new String[]{"end", "stop"};
-
+    private final Lock lock = new ReentrantLock();
+    private final String connectionKey = StringUtil.generateString(16);
+    private final ProcessScreen processScreen;
+    private final Path path;
+    private final boolean firstStart;
+    private ProcessState runtimeState = ProcessState.CREATED;
+    private Process process;
     public DefaultNodeLocalProcessWrapper(ProcessInformation processInformation) {
         super(processInformation);
 
@@ -82,15 +88,6 @@ public class DefaultNodeLocalProcessWrapper extends DefaultNodeRemoteProcessWrap
         this.prepare();
         this.setRuntimeState(ProcessState.PREPARED);
     }
-
-    private final Lock lock = new ReentrantLock();
-    private final String connectionKey = StringUtil.generateString(16);
-    private final ProcessScreen processScreen;
-    private final Path path;
-    private final boolean firstStart;
-
-    private ProcessState runtimeState = ProcessState.CREATED;
-    private Process process;
 
     @NotNull
     @Override

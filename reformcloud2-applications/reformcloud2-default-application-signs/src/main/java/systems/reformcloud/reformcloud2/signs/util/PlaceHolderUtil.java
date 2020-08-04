@@ -32,11 +32,11 @@ import java.util.regex.Pattern;
 
 public final class PlaceHolderUtil {
 
+    private static final Pattern PATTERN = Pattern.compile(".*?(%sign_layout_place_holder_(\\w+)%).*?", Pattern.CASE_INSENSITIVE);
+
     private PlaceHolderUtil() {
         throw new UnsupportedOperationException();
     }
-
-    private static final Pattern PATTERN = Pattern.compile(".*?(%sign_layout_place_holder_(\\w+)%).*?", Pattern.CASE_INSENSITIVE);
 
     public static <T> T format(String line, String group, ProcessInformation processInformation, Function<String, T> colorize) {
         line = line.replace("%group%", group);

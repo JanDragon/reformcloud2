@@ -37,11 +37,11 @@ import java.util.Optional;
 
 public class DefaultEmbeddedDatabaseTableWrapper implements DatabaseTableWrapper {
 
+    private final String tableName;
+
     public DefaultEmbeddedDatabaseTableWrapper(String tableName) {
         this.tableName = tableName;
     }
-
-    private final String tableName;
 
     @Override
     public void insert(@NotNull String key, @NotNull String id, @NotNull JsonConfiguration data) {

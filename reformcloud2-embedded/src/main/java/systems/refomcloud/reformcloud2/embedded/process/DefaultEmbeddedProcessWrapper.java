@@ -39,11 +39,11 @@ import java.util.Queue;
 
 public class DefaultEmbeddedProcessWrapper implements ProcessWrapper {
 
+    private ProcessInformation processInformation;
+
     public DefaultEmbeddedProcessWrapper(ProcessInformation processInformation) {
         this.processInformation = processInformation;
     }
-
-    private ProcessInformation processInformation;
 
     @NotNull
     @Override

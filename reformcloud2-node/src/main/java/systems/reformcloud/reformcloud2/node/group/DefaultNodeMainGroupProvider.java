@@ -43,6 +43,8 @@ import java.util.Optional;
 
 public class DefaultNodeMainGroupProvider implements MainGroupProvider {
 
+    private final Collection<MainGroup> mainGroups;
+    private final FileRegistry fileRegistry;
     public DefaultNodeMainGroupProvider(@NotNull String registryFolder) {
         this.fileRegistry = new DefaultFileRegistry(registryFolder);
         this.mainGroups = this.fileRegistry.readKeys(
@@ -51,9 +53,6 @@ public class DefaultNodeMainGroupProvider implements MainGroupProvider {
                         "Main-Group", path.toAbsolutePath().toString()))
         );
     }
-
-    private final Collection<MainGroup> mainGroups;
-    private final FileRegistry fileRegistry;
 
     @NotNull
     @Override

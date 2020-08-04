@@ -36,16 +36,15 @@ import java.util.UUID;
 
 public class NodeToNodePlayEffectToPlayer extends ProtocolPacket {
 
+    private UUID uniqueId;
+    private String effect;
+
     public NodeToNodePlayEffectToPlayer() {
     }
-
     public NodeToNodePlayEffectToPlayer(UUID uniqueId, String effect) {
         this.uniqueId = uniqueId;
         this.effect = effect;
     }
-
-    private UUID uniqueId;
-    private String effect;
 
     @Override
     public int getId() {

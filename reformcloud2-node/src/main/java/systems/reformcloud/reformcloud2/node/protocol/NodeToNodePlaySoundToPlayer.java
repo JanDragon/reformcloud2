@@ -36,20 +36,18 @@ import java.util.UUID;
 
 public class NodeToNodePlaySoundToPlayer extends ProtocolPacket {
 
+    private UUID uniqueId;
+    private String sound;
+    private float volume;
+    private float pitch;
     public NodeToNodePlaySoundToPlayer() {
     }
-
     public NodeToNodePlaySoundToPlayer(UUID uniqueId, String sound, float volume, float pitch) {
         this.uniqueId = uniqueId;
         this.sound = sound;
         this.volume = volume;
         this.pitch = pitch;
     }
-
-    private UUID uniqueId;
-    private String sound;
-    private float volume;
-    private float pitch;
 
     @Override
     public int getId() {

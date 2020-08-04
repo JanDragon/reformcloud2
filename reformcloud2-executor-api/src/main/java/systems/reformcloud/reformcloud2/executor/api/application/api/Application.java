@@ -40,10 +40,10 @@ import java.util.concurrent.Executors;
 
 public class Application {
 
+    public final DependencyLoader dependencyLoader = new DefaultDependencyLoader();
     private LoadedApplication application;
     private ExecutorService executorService;
     private AppClassLoader appClassLoader;
-    public final DependencyLoader dependencyLoader = new DefaultDependencyLoader();
 
     public final void init(@NotNull LoadedApplication application, AppClassLoader loader) {
         this.application = application;

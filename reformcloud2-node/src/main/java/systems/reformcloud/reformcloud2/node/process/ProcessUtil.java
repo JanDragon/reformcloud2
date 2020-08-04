@@ -52,10 +52,6 @@ import java.util.stream.Collectors;
 
 final class ProcessUtil {
 
-    private ProcessUtil() {
-        throw new UnsupportedOperationException();
-    }
-
     private static final Pattern IP_PATTERN = Pattern.compile(
             "(?<!\\d|\\d\\.)" +
                     "(?:[01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
@@ -64,6 +60,10 @@ final class ProcessUtil {
                     "(?:[01]?\\d\\d?|2[0-4]\\d|25[0-5])" +
                     "(?!\\d|\\.\\d)"
     );
+
+    private ProcessUtil() {
+        throw new UnsupportedOperationException();
+    }
 
     static @NotNull Optional<String> uploadLog(@NotNull Collection<String> logLines) {
         StringBuilder stringBuilder = new StringBuilder();

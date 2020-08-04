@@ -36,20 +36,18 @@ import java.util.UUID;
 
 public class NodeToNodeCopyProcessToTemplate extends ProtocolPacket {
 
+    private UUID uniqueId;
+    private String group;
+    private String name;
+    private String backend;
     public NodeToNodeCopyProcessToTemplate() {
     }
-
     public NodeToNodeCopyProcessToTemplate(UUID uniqueId, String group, String name, String backend) {
         this.uniqueId = uniqueId;
         this.group = group;
         this.name = name;
         this.backend = backend;
     }
-
-    private UUID uniqueId;
-    private String group;
-    private String name;
-    private String backend;
 
     @Override
     public int getId() {

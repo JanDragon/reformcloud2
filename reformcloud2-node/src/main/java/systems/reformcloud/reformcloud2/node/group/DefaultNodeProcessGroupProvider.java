@@ -44,6 +44,8 @@ import java.util.Optional;
 
 public class DefaultNodeProcessGroupProvider implements ProcessGroupProvider {
 
+    private final Collection<ProcessGroup> processGroups;
+    private final FileRegistry fileRegistry;
     public DefaultNodeProcessGroupProvider(@NotNull String registryFolder) {
         this.fileRegistry = new DefaultFileRegistry(registryFolder);
         this.processGroups = this.fileRegistry.readKeys(
@@ -52,9 +54,6 @@ public class DefaultNodeProcessGroupProvider implements ProcessGroupProvider {
                         "Process-Group", path.toAbsolutePath().toString()))
         );
     }
-
-    private final Collection<ProcessGroup> processGroups;
-    private final FileRegistry fileRegistry;
 
     @NotNull
     @Override

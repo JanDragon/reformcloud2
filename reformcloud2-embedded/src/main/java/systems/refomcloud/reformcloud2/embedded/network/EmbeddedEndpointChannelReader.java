@@ -42,17 +42,15 @@ import java.util.concurrent.locks.Lock;
 
 public class EmbeddedEndpointChannelReader extends SharedEndpointChannelReader {
 
+    private final Lock lock;
+    private final Condition condition;
+    private boolean wasActive = false;
     public EmbeddedEndpointChannelReader(Lock lock, Condition condition) {
         PacketRegister.preAuth();
 
         this.lock = lock;
         this.condition = condition;
     }
-
-    private boolean wasActive = false;
-
-    private final Lock lock;
-    private final Condition condition;
 
     @Override
     public boolean shouldHandle(@NotNull Packet packet) {

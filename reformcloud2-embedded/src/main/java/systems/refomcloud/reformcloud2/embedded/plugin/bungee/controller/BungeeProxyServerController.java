@@ -60,13 +60,12 @@ public class BungeeProxyServerController implements ProxyServerController {
         }
     }
 
+    private final List<ProcessInformation> cachedLobbyServices = new CopyOnWriteArrayList<>();
+    private final List<ProcessInformation> cachedProxyServices = new CopyOnWriteArrayList<>();
     public BungeeProxyServerController() {
         ProxyServer.getInstance().getConfig().getListeners().forEach(listenerInfo -> listenerInfo.getServerPriority().clear());
         ProxyServer.getInstance().getConfig().getServers().clear();
     }
-
-    private final List<ProcessInformation> cachedLobbyServices = new CopyOnWriteArrayList<>();
-    private final List<ProcessInformation> cachedProxyServices = new CopyOnWriteArrayList<>();
 
     @Override
     public void registerProcess(@NotNull ProcessInformation processInformation) {

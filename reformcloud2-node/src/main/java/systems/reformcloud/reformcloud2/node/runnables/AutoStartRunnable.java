@@ -40,34 +40,6 @@ import java.util.Optional;
 
 public class AutoStartRunnable implements Runnable {
 
-    @Override
-    public void run() {
-        if (!NodeExecutor.getInstance().isReady()
-                || !ExecutorAPI.getInstance().getServiceRegistry().getProviderUnchecked(ClusterManager.class).isHeadNode()) {
-            return;
-        }
-
-        for (ProcessGroup processGroup : ExecutorAPI.getInstance().getProcessGroupProvider().getProcessGroups()) {
-            if (processGroup.getTemplates().isEmpty()) {
-                continue;
-            }
-
-            Collection<ProcessInformation> processes = ExecutorAPI.getInstance().getProcessProvider().getProcessesByProcessGroup(processGroup.getName());
-            int runningProcesses = Streams.allOf(processes, e -> e.getProcessDetail().getProcessState().isStartedOrOnline()).size();
-            if (processGroup.getStartupConfiguration().getMinOnlineProcesses() > runningProcesses
-                    && (processGroup.getStartupConfiguration().getMaxOnlineProcesses() == -1
-                    || processGroup.getStartupConfiguration().getMaxOnlineProcesses() > runningProcesses)) {
-                startPreparedOfGroup(processes, processGroup);
-            }
-
-            int prepared = Streams.allOf(processes, e -> e.getProcessDetail().getProcessState() == ProcessState.PREPARED).size();
-            if (processGroup.getStartupConfiguration().getAlwaysPreparedProcesses() > prepared) {
-                ExecutorAPI.getInstance().getProcessProvider().createProcess().group(processGroup).prepare();
-                System.out.println(LanguageManager.get("process-preparing-new-process", processGroup.getName()));
-            }
-        }
-    }
-
     static void startPreparedOfGroup(@NotNull Collection<ProcessInformation> processes, @NotNull ProcessGroup processGroup) {
         ProcessInformation prepared = Streams.filter(processes, e -> e.getProcessDetail().getProcessState() == ProcessState.PREPARED);
         if (prepared != null) {
@@ -94,6 +66,34 @@ public class AutoStartRunnable implements Runnable {
             if (wrapper != null) {
                 wrapper.setRuntimeState(ProcessState.STARTED);
                 System.out.println(LanguageManager.get("process-start-process", processGroup.getName()));
+            }
+        }
+    }
+
+    @Override
+    public void run() {
+        if (!NodeExecutor.getInstance().isReady()
+                || !ExecutorAPI.getInstance().getServiceRegistry().getProviderUnchecked(ClusterManager.class).isHeadNode()) {
+            return;
+        }
+
+        for (ProcessGroup processGroup : ExecutorAPI.getInstance().getProcessGroupProvider().getProcessGroups()) {
+            if (processGroup.getTemplates().isEmpty()) {
+                continue;
+            }
+
+            Collection<ProcessInformation> processes = ExecutorAPI.getInstance().getProcessProvider().getProcessesByProcessGroup(processGroup.getName());
+            int runningProcesses = Streams.allOf(processes, e -> e.getProcessDetail().getProcessState().isStartedOrOnline()).size();
+            if (processGroup.getStartupConfiguration().getMinOnlineProcesses() > runningProcesses
+                    && (processGroup.getStartupConfiguration().getMaxOnlineProcesses() == -1
+                    || processGroup.getStartupConfiguration().getMaxOnlineProcesses() > runningProcesses)) {
+                startPreparedOfGroup(processes, processGroup);
+            }
+
+            int prepared = Streams.allOf(processes, e -> e.getProcessDetail().getProcessState() == ProcessState.PREPARED).size();
+            if (processGroup.getStartupConfiguration().getAlwaysPreparedProcesses() > prepared) {
+                ExecutorAPI.getInstance().getProcessProvider().createProcess().group(processGroup).prepare();
+                System.out.println(LanguageManager.get("process-preparing-new-process", processGroup.getName()));
             }
         }
     }

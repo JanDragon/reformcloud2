@@ -38,6 +38,8 @@ import java.util.Collection;
 
 public class RethinkDatabaseProvider implements DatabaseProvider, AutoCloseable {
 
+    private final Connection connection;
+    private final Db database;
     public RethinkDatabaseProvider(RethinkConfig config) {
         this.connection = RethinkDB.r.connection()
                 .hostname(config.getHost())
@@ -47,9 +49,6 @@ public class RethinkDatabaseProvider implements DatabaseProvider, AutoCloseable 
                 .connect();
         this.database = RethinkDB.r.db(config.getDatabase());
     }
-
-    private final Connection connection;
-    private final Db database;
 
     @Override
     public @NotNull DatabaseTableWrapper createTable(@NotNull String tableName) {

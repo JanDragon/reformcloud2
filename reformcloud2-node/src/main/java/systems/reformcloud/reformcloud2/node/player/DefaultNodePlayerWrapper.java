@@ -43,11 +43,11 @@ import java.util.UUID;
 
 public class DefaultNodePlayerWrapper implements PlayerWrapper {
 
+    private final UUID uniqueId;
+
     DefaultNodePlayerWrapper(UUID uniqueId) {
         this.uniqueId = uniqueId;
     }
-
-    private final UUID uniqueId;
 
     @NotNull
     private Optional<Duo<UUID, UUID>> getPlayerProcess() {

@@ -37,6 +37,8 @@ import systems.reformcloud.reformcloud2.permissions.objects.group.PermissionGrou
 
 public class ReformCloudChatPlugin extends JavaPlugin implements Listener {
 
+    private String chatFormat;
+
     @Override
     public void onEnable() {
         if (Bukkit.getPluginManager().getPlugin("ReformCloud2BukkitPermissions") == null) {
@@ -50,8 +52,6 @@ public class ReformCloudChatPlugin extends JavaPlugin implements Listener {
 
         Bukkit.getPluginManager().registerEvents(this, this);
     }
-
-    private String chatFormat;
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void handle(final @NotNull AsyncPlayerChatEvent event) {

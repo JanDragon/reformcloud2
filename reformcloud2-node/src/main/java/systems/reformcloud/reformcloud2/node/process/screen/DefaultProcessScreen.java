@@ -48,19 +48,17 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class DefaultProcessScreen implements ProcessScreen {
 
-    DefaultProcessScreen(DefaultNodeLocalProcessWrapper processWrapper) {
-        this.processWrapper = processWrapper;
-    }
-
     private final DefaultNodeLocalProcessWrapper processWrapper;
     private final Collection<String> listeningNodes = new CopyOnWriteArrayList<>();
     private final Lock readLock = new ReentrantLock();
-
     private final Queue<String> cachedLogLines = new ConcurrentLinkedQueue<>();
     private final StringBuffer stringBuffer = new StringBuffer();
     private final byte[] buffer = new byte[1024];
-
     private final int maxCacheSize = Integer.getInteger("systems.reformcloud.screen-cache-max-size", 256);
+
+    DefaultProcessScreen(DefaultNodeLocalProcessWrapper processWrapper) {
+        this.processWrapper = processWrapper;
+    }
 
     @Override
     public @NotNull ProcessInformation getTargetProcess() {

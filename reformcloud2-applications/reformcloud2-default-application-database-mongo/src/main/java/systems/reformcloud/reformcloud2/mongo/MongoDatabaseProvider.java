@@ -42,6 +42,8 @@ import java.util.Collection;
 
 public class MongoDatabaseProvider implements DatabaseProvider, AutoCloseable {
 
+    private final MongoClient client;
+    private final MongoDatabase database;
     public MongoDatabaseProvider(MongoConfig config) {
         try {
             this.client = MongoClients.create(MessageFormat.format(
@@ -57,9 +59,6 @@ public class MongoDatabaseProvider implements DatabaseProvider, AutoCloseable {
             throw new RuntimeException(exception);
         }
     }
-
-    private final MongoClient client;
-    private final MongoDatabase database;
 
     @Override
     public @NotNull DatabaseTableWrapper createTable(@NotNull String tableName) {

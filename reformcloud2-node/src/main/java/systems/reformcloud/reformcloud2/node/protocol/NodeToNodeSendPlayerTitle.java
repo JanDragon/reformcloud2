@@ -36,9 +36,14 @@ import java.util.UUID;
 
 public class NodeToNodeSendPlayerTitle extends ProtocolPacket {
 
+    private UUID uniqueId;
+    private String title;
+    private String subTitle;
+    private int fadeIn;
+    private int stay;
+    private int fadeOut;
     public NodeToNodeSendPlayerTitle() {
     }
-
     public NodeToNodeSendPlayerTitle(UUID uniqueId, String title, String subTitle, int fadeIn, int stay, int fadeOut) {
         this.uniqueId = uniqueId;
         this.title = title;
@@ -47,13 +52,6 @@ public class NodeToNodeSendPlayerTitle extends ProtocolPacket {
         this.stay = stay;
         this.fadeOut = fadeOut;
     }
-
-    private UUID uniqueId;
-    private String title;
-    private String subTitle;
-    private int fadeIn;
-    private int stay;
-    private int fadeOut;
 
     @Override
     public int getId() {

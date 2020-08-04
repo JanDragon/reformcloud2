@@ -36,16 +36,15 @@ import java.util.UUID;
 
 public class NodeToNodeSendProcessCommand extends ProtocolPacket {
 
+    private UUID uniqueId;
+    private String command;
+
     public NodeToNodeSendProcessCommand() {
     }
-
     public NodeToNodeSendProcessCommand(UUID uniqueId, String command) {
         this.uniqueId = uniqueId;
         this.command = command;
     }
-
-    private UUID uniqueId;
-    private String command;
 
     @Override
     public int getId() {

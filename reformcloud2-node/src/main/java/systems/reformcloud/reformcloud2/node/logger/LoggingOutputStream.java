@@ -33,14 +33,12 @@ import java.util.logging.Logger;
 public class LoggingOutputStream extends ByteArrayOutputStream {
 
     private static final String LINE_SEPARATOR = System.getProperty("line.separator");
-
+    private final Logger parent;
+    private final Level level;
     public LoggingOutputStream(Logger parent, Level level) {
         this.parent = parent;
         this.level = level;
     }
-
-    private final Logger parent;
-    private final Level level;
 
     @Override
     public void flush() throws IOException {

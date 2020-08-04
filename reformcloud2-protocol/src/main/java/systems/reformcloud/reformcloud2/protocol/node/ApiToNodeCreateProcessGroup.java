@@ -40,9 +40,15 @@ import java.util.List;
 
 public class ApiToNodeCreateProcessGroup extends ProtocolPacket {
 
+    private String name;
+    private boolean staticGroup;
+    private boolean lobby;
+    private boolean showId;
+    private List<Template> templates;
+    private PlayerAccessConfiguration playerAccessConfiguration;
+    private StartupConfiguration startupConfiguration;
     public ApiToNodeCreateProcessGroup() {
     }
-
     public ApiToNodeCreateProcessGroup(String name, boolean staticGroup, boolean lobby, boolean showId,
                                        List<Template> templates, PlayerAccessConfiguration playerAccessConfiguration,
                                        StartupConfiguration startupConfiguration) {
@@ -54,14 +60,6 @@ public class ApiToNodeCreateProcessGroup extends ProtocolPacket {
         this.playerAccessConfiguration = playerAccessConfiguration;
         this.startupConfiguration = startupConfiguration;
     }
-
-    private String name;
-    private boolean staticGroup;
-    private boolean lobby;
-    private boolean showId;
-    private List<Template> templates;
-    private PlayerAccessConfiguration playerAccessConfiguration;
-    private StartupConfiguration startupConfiguration;
 
     @Override
     public int getId() {

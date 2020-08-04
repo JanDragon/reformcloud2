@@ -37,14 +37,14 @@ import systems.reformcloud.reformcloud2.protocol.ProtocolPacket;
 
 public class NodeToApiProcessRegister extends ProtocolPacket {
 
+    private ProcessInformation processInformation;
+
     public NodeToApiProcessRegister() {
     }
 
     public NodeToApiProcessRegister(ProcessInformation processInformation) {
         this.processInformation = processInformation;
     }
-
-    private ProcessInformation processInformation;
 
     @Override
     public int getId() {

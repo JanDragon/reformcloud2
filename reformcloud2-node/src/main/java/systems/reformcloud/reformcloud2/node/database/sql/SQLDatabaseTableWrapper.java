@@ -38,15 +38,14 @@ import java.util.Optional;
 
 public final class SQLDatabaseTableWrapper implements DatabaseTableWrapper {
 
+    private final String name;
+    private final AbstractSQLDatabaseProvider provider;
     SQLDatabaseTableWrapper(@NotNull String name, @NotNull AbstractSQLDatabaseProvider provider) {
         this.name = name;
         this.provider = provider;
 
         provider.executeUpdate("CREATE TABLE IF NOT EXISTS `" + name + "` (`key` TEXT, `identifier` TEXT, `data` LONGBLOB);");
     }
-
-    private final String name;
-    private final AbstractSQLDatabaseProvider provider;
 
     @Override
     public void insert(@NotNull String key, @NotNull String id, @NotNull JsonConfiguration data) {

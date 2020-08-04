@@ -39,14 +39,14 @@ import java.util.UUID;
 
 public class ApiToNodeGetCurrentPlayerProcessUniqueIds extends ProtocolPacket {
 
+    private UUID playerUniqueId;
+
     public ApiToNodeGetCurrentPlayerProcessUniqueIds() {
     }
 
     public ApiToNodeGetCurrentPlayerProcessUniqueIds(UUID playerUniqueId) {
         this.playerUniqueId = playerUniqueId;
     }
-
-    private UUID playerUniqueId;
 
     @Override
     public int getId() {

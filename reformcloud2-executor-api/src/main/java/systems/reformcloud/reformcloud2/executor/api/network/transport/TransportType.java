@@ -64,6 +64,24 @@ public enum TransportType {
         this.eventLoopGroupFactory = eventLoopGroupFactory;
     }
 
+    public static @NotNull TransportType getBestType() {
+        if (Boolean.getBoolean("reformcloud.disable.native")) {
+            return NIO;
+        }
+
+        for (TransportType value : TransportType.values()) {
+            if (value.isAvailable()) {
+                return value;
+            }
+        }
+
+        return NIO;
+    }
+
+    public static @NotNull ThreadFactory newThreadFactory(@NotNull String name, @NotNull EventLoopGroupType type) {
+        return new FastNettyThreadFactory("Netty " + type.getName() + ' ' + name + " Thread#%d");
+    }
+
     public @NotNull String getName() {
         return this.name;
     }
@@ -82,23 +100,5 @@ public enum TransportType {
 
     public @NotNull EventLoopGroup getEventLoopGroupFactory(@NotNull EventLoopGroupType type) {
         return this.eventLoopGroupFactory.apply(type, this.getName());
-    }
-
-    public static @NotNull TransportType getBestType() {
-        if (Boolean.getBoolean("reformcloud.disable.native")) {
-            return NIO;
-        }
-
-        for (TransportType value : TransportType.values()) {
-            if (value.isAvailable()) {
-                return value;
-            }
-        }
-
-        return NIO;
-    }
-
-    public static @NotNull ThreadFactory newThreadFactory(@NotNull String name, @NotNull EventLoopGroupType type) {
-        return new FastNettyThreadFactory("Netty " + type.getName() + ' ' + name + " Thread#%d");
     }
 }

@@ -51,11 +51,11 @@ public class PortValidatorTest {
 
     private static class HigherOrEqualMatcher extends BaseMatcher<Integer> {
 
+        private final int min;
+
         public HigherOrEqualMatcher(int min) {
             this.min = min;
         }
-
-        private final int min;
 
         @Override
         public boolean matches(Object o) {

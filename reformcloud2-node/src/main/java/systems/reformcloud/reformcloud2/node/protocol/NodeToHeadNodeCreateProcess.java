@@ -35,16 +35,15 @@ import systems.reformcloud.reformcloud2.protocol.ProtocolPacket;
 
 public class NodeToHeadNodeCreateProcess extends ProtocolPacket {
 
+    private ProcessFactoryConfiguration configuration;
+    private String targetProcessFactory;
+
     public NodeToHeadNodeCreateProcess() {
     }
-
     public NodeToHeadNodeCreateProcess(ProcessFactoryConfiguration configuration, String targetProcessFactory) {
         this.configuration = configuration;
         this.targetProcessFactory = targetProcessFactory;
     }
-
-    private ProcessFactoryConfiguration configuration;
-    private String targetProcessFactory;
 
     @Override
     public int getId() {

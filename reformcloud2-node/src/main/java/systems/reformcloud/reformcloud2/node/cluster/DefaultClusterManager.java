@@ -61,6 +61,12 @@ import java.util.UUID;
 
 public class DefaultClusterManager implements ClusterManager {
 
+    private final DefaultNodeNodeInformationProvider nodeInformationProvider;
+    private final DefaultNodeProcessProvider processProvider;
+    private final DefaultNodeProcessGroupProvider processGroupProvider;
+    private final DefaultNodeMainGroupProvider mainGroupProvider;
+    private NodeInformation head;
+
     public DefaultClusterManager(DefaultNodeNodeInformationProvider nodeInformationProvider, DefaultNodeProcessProvider processProvider,
                                  DefaultNodeProcessGroupProvider processGroupProvider, DefaultNodeMainGroupProvider mainGroupProvider,
                                  NodeInformation head) {
@@ -70,13 +76,6 @@ public class DefaultClusterManager implements ClusterManager {
         this.mainGroupProvider = mainGroupProvider;
         this.head = head;
     }
-
-    private final DefaultNodeNodeInformationProvider nodeInformationProvider;
-    private final DefaultNodeProcessProvider processProvider;
-    private final DefaultNodeProcessGroupProvider processGroupProvider;
-    private final DefaultNodeMainGroupProvider mainGroupProvider;
-
-    private NodeInformation head;
 
     @Override
     public @NotNull Task<ProcessWrapper> createProcess(@NotNull ProcessGroup processGroup, @Nullable String node, @Nullable String displayName, @Nullable String messageOfTheDay, @Nullable Template template, @NotNull Collection<ProcessInclusion> inclusions, @NotNull JsonConfiguration jsonConfiguration, @NotNull ProcessState initialState, @NotNull UUID uniqueId, int memory, int id, int maxPlayers, @Nullable String targetProcessFactory) {

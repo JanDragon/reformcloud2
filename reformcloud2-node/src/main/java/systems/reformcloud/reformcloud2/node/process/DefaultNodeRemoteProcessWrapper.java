@@ -44,11 +44,11 @@ import java.util.concurrent.TimeUnit;
 
 public class DefaultNodeRemoteProcessWrapper implements ProcessWrapper {
 
+    protected ProcessInformation processInformation;
+
     public DefaultNodeRemoteProcessWrapper(ProcessInformation processInformation) {
         this.processInformation = processInformation;
     }
-
-    protected ProcessInformation processInformation;
 
     @NotNull
     @Override

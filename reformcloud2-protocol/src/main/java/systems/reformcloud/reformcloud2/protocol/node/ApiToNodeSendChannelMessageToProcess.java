@@ -40,18 +40,16 @@ import java.util.UUID;
 
 public class ApiToNodeSendChannelMessageToProcess extends ProtocolPacket {
 
+    private UUID targetProcess;
+    private String channel;
+    private JsonConfiguration data;
     public ApiToNodeSendChannelMessageToProcess() {
     }
-
     public ApiToNodeSendChannelMessageToProcess(ProcessInformation targetProcess, String channel, JsonConfiguration data) {
         this.targetProcess = targetProcess.getProcessDetail().getProcessUniqueID();
         this.channel = channel;
         this.data = data;
     }
-
-    private UUID targetProcess;
-    private String channel;
-    private JsonConfiguration data;
 
     @Override
     public int getId() {

@@ -31,11 +31,11 @@ import systems.reformcloud.reformcloud2.shared.group.DefaultProcessGroupBuilder;
 
 public class NodeProcessGroupBuilder extends DefaultProcessGroupBuilder {
 
+    private final DefaultNodeProcessGroupProvider processGroupProvider;
+
     public NodeProcessGroupBuilder(DefaultNodeProcessGroupProvider processGroupProvider) {
         this.processGroupProvider = processGroupProvider;
     }
-
-    private final DefaultNodeProcessGroupProvider processGroupProvider;
 
     @NotNull
     @Override

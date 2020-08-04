@@ -36,18 +36,16 @@ import java.util.Collection;
 
 public class NodeToNodeProcessScreenLines extends ProtocolPacket {
 
+    private String processName;
+    private String nodeName;
+    private Collection<String> newLines;
     public NodeToNodeProcessScreenLines() {
     }
-
     public NodeToNodeProcessScreenLines(String processName, String nodeName, Collection<String> newLines) {
         this.processName = processName;
         this.nodeName = nodeName;
         this.newLines = newLines;
     }
-
-    private String processName;
-    private String nodeName;
-    private Collection<String> newLines;
 
     @Override
     public int getId() {

@@ -42,11 +42,11 @@ import java.util.concurrent.TimeUnit;
 
 public class DefaultNodeProcessWrapper implements NodeProcessWrapper {
 
+    protected NodeInformation nodeInformation;
+
     DefaultNodeProcessWrapper(@NotNull NodeInformation nodeInformation) {
         this.nodeInformation = nodeInformation;
     }
-
-    protected NodeInformation nodeInformation;
 
     @NotNull
     @Override

@@ -52,12 +52,12 @@ import systems.reformcloud.reformcloud2.executor.api.network.packet.PacketProvid
 )
 public class VelocityPlugin {
 
+    private final ProxyServer proxyServer;
+
     @Inject
     public VelocityPlugin(ProxyServer proxyServer) {
         this.proxyServer = proxyServer;
     }
-
-    private final ProxyServer proxyServer;
 
     @Subscribe
     public void handle(ProxyInitializeEvent event) {
